@@ -22,6 +22,13 @@ RUN mkdir app \
     && echo $SMVERSION \
     && curl -s https://sm.alliedmods.net/smdrop/1.10/$SMVERSION | tar zxf - -C app/ \
     && chmod +x $COMPILER_PATH/spcomp
+    
+# Dependency: Multicolors
+RUN mkdir plugins \
+    && cd plugins \
+    && git clone https://github.com/Bara/Multi-Colors.git . \
+    && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/
+    && rm -rf plugins/
 
 # 1v100 Plugin
 RUN $COMPILER_PATH/spcomp 1v100.sp
