@@ -6,15 +6,15 @@ WORKDIR /app
 
 COPY . /app
 
-#RUN dpkg --add-architecture i386 \
-#    && apt-get update \
-#    && apt-get install --no-install-recommends -y \
-#    ca-certificates \
-#    curl \
-#    git \
-#    lib32stdc++6 \
-#    mercurial \
-#    rsync
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install --no-install-recommends -y \
+    ca-certificates \
+    curl \
+    git \
+    lib32stdc++6 \
+    mercurial \
+    rsync
 
 # SourceMod
 RUN mkdir app \
