@@ -2,9 +2,9 @@ FROM debian:buster-slim
 
 ENV COMPILER_PATH=/tmp/app/addons/sourcemod/scripting
 
-WORKDIR /app
+WORKDIR /tmp
 
-COPY . /app
+COPY . /tmp
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
