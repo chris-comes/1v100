@@ -27,7 +27,7 @@ RUN mkdir app \
 RUN mkdir plugins \
     && cd plugins \
     && git clone https://github.com/Bara/Multi-Colors.git . \
-    && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/
+    && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/ \
     && rm -rf plugins/
 
 # 1v100 Plugin
