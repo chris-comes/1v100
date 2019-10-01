@@ -2,6 +2,8 @@ FROM debian:buster-slim
 
 ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
+RUN echo $CI_REPO_BRANCH
+
 WORKDIR /app
 
 RUN dpkg --add-architecture i386 \
