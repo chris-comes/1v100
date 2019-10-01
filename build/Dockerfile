@@ -4,7 +4,7 @@ ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
 WORKDIR /app
 
-COPY addons/sourcemod/scripting/* /app
+COPY addons/sourcemod/scripting/*.sp /app
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
