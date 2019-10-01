@@ -14,9 +14,10 @@
 // Global Plugin Tag
 #define TAG "[1v100]"
 
-// Global Variables
+// Global Booleans
 bool g_bRandomSelected;
 
+// Global Integers
 int g_iJuggernautKills;
 
 public Plugin myinfo = 
@@ -125,7 +126,9 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
 	{
 		g_iJuggernautKills++; // Count how many kills the Juggernaut has gotten
 		if (g_iJuggernautKills == 5 || g_iJuggernautKills == 10 || g_iJuggernautKills == 15 || g_iJuggernautKills == 20 || g_iJuggernautKills == 25)
+		{
 			CPrintToChatAll("{orange}%s {default}The {darkblue}Juggernaut has {darkred}SLAIN %i {default}opponent(s)", TAG, g_iJuggernautKills);		
+		}
 	}
 }
 
@@ -188,9 +191,13 @@ public Action Command_JoinTeam(int client, const char[] command, int argc)
 public Action Timer_GunMenu(Handle timer, any client)
 {
 	if (GetClientTeam(client) == CS_TEAM_T) // If T Open SMG/Pistol Menu
+	{
 		OpenSmgMenu(client);
+	}
 	else if (GetClientTeam(client) == CS_TEAM_CT) // If CT open Heavy weapons Menu
+	{
 		OpenCTGunsMenu(client);
+	}
 }
 
 void OpenCTGunsMenu(int client) // Juggernaut Weapons
