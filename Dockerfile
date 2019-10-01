@@ -4,7 +4,7 @@ ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
 WORKDIR /app
 
-COPY addons/sourcemod/scripting/ /app
+COPY . /app
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
@@ -30,4 +30,5 @@ RUN mkdir plugins \
     && rm -rf plugins/
 
 # 1v100 Plugin
-RUN $COMPILER_PATH/spcomp 1v100.sp
+RUN cd addons/sourcemod/scripting \
+    && $COMPILER_PATH/spcomp 1v100.sp
