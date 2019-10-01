@@ -2,8 +2,6 @@ FROM debian:buster-slim
 
 ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
-COPY . /app
-
 WORKDIR /app
 
 RUN dpkg --add-architecture i386 \
@@ -30,5 +28,8 @@ RUN mkdir dependency \
     && rm -rf dependency/
 
 # 1v100 Plugin
-RUN cd addons/sourcemod/scripting \
+RUN mkdir plugin \
+    && cd plugin \
+    && git clone -b $CI_REPO_BRANCH https://github.com/crc1225/1v100.git . \
+    && cd addons/sourcemod/scripting/ \
     && $COMPILER_PATH/spcomp 1v100.sp
