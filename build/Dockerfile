@@ -1,10 +1,10 @@
 FROM debian:buster-slim
 
+ARG Build.SourceBranchName
+
 ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
 WORKDIR /app
-
-COPY . /app
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
@@ -23,12 +23,15 @@ RUN mkdir compiler \
     && chmod +x $COMPILER_PATH/spcomp
     
 # Dependency: Multicolors
-RUN mkdir plugins \
-    && cd plugins \
+RUN mkdir dependency \
+    && cd dependency \
     && git clone https://github.com/Bara/Multi-Colors.git . \
     && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/ \
-    && rm -rf plugins/
+    && rm -rf dependency/
 
 # 1v100 Plugin
-RUN cd addons/sourcemod/scripting \
+RUN mkdir plugin \
+    && cd plugin \
+    && git clone -b ${Build.SourceBranchName} https://github.com/crc1225/1v100.git . \
+    && cd addons/sourcemod/scripting/ \
     && $COMPILER_PATH/spcomp 1v100.sp
