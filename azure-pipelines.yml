@@ -5,7 +5,7 @@
 trigger:
 - master
 pr:
--master
+- master
 
 resources:
 - repo: self
