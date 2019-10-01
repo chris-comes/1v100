@@ -22,5 +22,5 @@ jobs:
      displayName: Build an image
      inputs:
        command: build
-       dockerfile: '**/build/Dockerfile'
-       arguments: -f 
+       dockerfile: '**Dockerfile'
+       arguments: --build-arg CI_REPO_BRANCH=com.azure.dev.image.build.sourcebranchname
