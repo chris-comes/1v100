@@ -31,4 +31,5 @@ RUN mkdir plugins \
     && rm -rf plugins/
 
 # 1v100 Plugin
-RUN $COMPILER_PATH/spcomp 1v100.sp
+RUN cd addons/sourcemod/scripting/ \ 
+    && $COMPILER_PATH/spcomp 1v100.sp
