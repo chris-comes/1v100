@@ -32,6 +32,6 @@ RUN mkdir dependency \
 # 1v100 Plugin
 RUN mkdir plugin \
     && cd plugin \
-    && git clone -b ${Build.SourceBranchName} https://github.com/crc1225/1v100.git . \
+    && git clone -b $Build.SourceBranchName https://github.com/crc1225/1v100.git . \
     && cd addons/sourcemod/scripting/ \
     && $COMPILER_PATH/spcomp 1v100.sp
