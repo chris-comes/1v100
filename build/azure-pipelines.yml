@@ -22,6 +22,6 @@ jobs:
      displayName: Build an image
      inputs:
        command: build
-       dockerfile: '**/Dockerfile'
-       tags: |
-        -f
+#       dockerfile: '**/Dockerfile'
+       dockerfile: '../Dockerfile'
+       arguments: -f 
