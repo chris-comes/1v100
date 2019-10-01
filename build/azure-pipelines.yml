@@ -23,5 +23,5 @@ jobs:
      inputs:
        command: build
 #       dockerfile: '**/Dockerfile'
-       dockerfile: '../Dockerfile'
+       dockerfile: '../build/Dockerfile'
        arguments: -f 
