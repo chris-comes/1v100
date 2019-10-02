@@ -1,5 +1,7 @@
 FROM debian:buster-slim
 
+ARG CI_REPO_BRANCH
+
 ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
 RUN echo $CI_REPO_BRANCH
