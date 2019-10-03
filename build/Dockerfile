@@ -1,10 +1,9 @@
 FROM debian:buster-slim
 
-ARG CI_REPO_BRANCH
+ARG BUILD_SOURCEBRANCHNAME
+RUN echo $BUILD_SOURCEBRANCHNAME
 
 ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
-
-RUN echo $CI_REPO_BRANCH
 
 WORKDIR /app
 
@@ -34,6 +33,6 @@ RUN mkdir dependency \
 # 1v100 Plugin
 RUN mkdir plugin \
     && cd plugin \
-    && git clone -b ${CI_REPO_BRANCH} https://github.com/crc1225/1v100.git . \
+    && git clone -b ${BUILD_SOURCEBRANCHNAME} https://github.com/crc1225/1v100.git . \
     && cd addons/sourcemod/scripting/ \
     && $COMPILER_PATH/spcomp 1v100.sp
