@@ -23,4 +23,3 @@ jobs:
      inputs:
        command: build
        dockerfile: '**/../Dockerfile'
-       arguments: --build-arg BUILD_SOURCEBRANCHNAME=$(Build.SourceBranchName)
