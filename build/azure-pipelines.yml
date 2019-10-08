@@ -4,10 +4,9 @@
 
 trigger:
 - master
-- dev
+- dev/*
 pr:
 - master
-- dev
 
 variables:
   tag: '$(Build.BuildId)'
