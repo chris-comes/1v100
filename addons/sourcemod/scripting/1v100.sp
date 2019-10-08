@@ -22,11 +22,11 @@ int g_iJuggernautKills;
 
 public Plugin myinfo = 
 {
-	name = "1 vs 100 Event",
-	author = "EdgeGamers System Development",
-	description = "",
+	name = "1 vs 100",
+	author = "crc1225",
+	description = "One Player Faces Off Against Everyone Else",
 	version = "1.0.0",
-	url = "https://www.edge-gamers.com"
+	url = "https://github.com/crc1225"
 };
 
 public void OnPluginStart()

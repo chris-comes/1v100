@@ -1,10 +1,10 @@
 FROM debian:buster-slim
 
-ENV COMPILER_PATH=/tmp/app/addons/sourcemod/scripting
+COPY . /app
 
-WORKDIR /tmp
+ENV COMPILER_PATH=/app/compiler/addons/sourcemod/scripting
 
-COPY . /tmp
+WORKDIR /app
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
@@ -13,22 +13,22 @@ RUN dpkg --add-architecture i386 \
     curl \
     git \
     lib32stdc++6 \
-    mercurial \
     rsync
 
 # SourceMod
-RUN mkdir app \
+RUN mkdir compiler \
     && SMVERSION=$(curl -s https://sm.alliedmods.net/smdrop/1.10/sourcemod-latest-linux) \
     && echo $SMVERSION \
-    && curl -s https://sm.alliedmods.net/smdrop/1.10/$SMVERSION | tar zxf - -C app/ \
+    && curl -s https://sm.alliedmods.net/smdrop/1.10/$SMVERSION | tar zxf - -C compiler/ \
     && chmod +x $COMPILER_PATH/spcomp
     
 # Dependency: Multicolors
-RUN mkdir plugins \
-    && cd plugins \
+RUN mkdir dependency \
+    && cd dependency \
     && git clone https://github.com/Bara/Multi-Colors.git . \
     && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/ \
-    && rm -rf plugins/
+    && rm -rf dependency/
 
 # 1v100 Plugin
-RUN $COMPILER_PATH/spcomp 1v100.sp
+RUN cd addons/sourcemod/scripting/ \
+    && $COMPILER_PATH/spcomp 1v100.sp

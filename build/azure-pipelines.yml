@@ -22,4 +22,4 @@ jobs:
      displayName: Build an image
      inputs:
        command: build
-       dockerfile: './Dockerfile'
+       dockerfile: '**/../Dockerfile'
