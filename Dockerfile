@@ -11,6 +11,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install --no-install-recommends -y \
     ca-certificates \
     curl \
+    git \
     lib32stdc++6
 
 # SourceMod
