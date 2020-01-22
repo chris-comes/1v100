@@ -12,6 +12,7 @@ RUN dpkg --add-architecture i386 \
     ca-certificates \
     curl \
     git \
+    rsynce \
     lib32stdc++6
 
 # SourceMod
