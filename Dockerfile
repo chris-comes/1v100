@@ -12,23 +12,23 @@ RUN dpkg --add-architecture i386 \
     ca-certificates \
     curl \
     git \
-    lib32stdc++6 \
-    rsync
+    rsync \
+    lib32stdc++6
 
 # SourceMod
 RUN mkdir compiler \
-    && SMVERSION=$(curl -s https://sm.alliedmods.net/smdrop/1.10/sourcemod-latest-linux) \
+    && SMVERSION=$(curl -s https://sm.alliedmods.net/smdrop/1.11/sourcemod-latest-linux) \
     && echo $SMVERSION \
-    && curl -s https://sm.alliedmods.net/smdrop/1.10/$SMVERSION | tar zxf - -C compiler/ \
+    && curl -s https://sm.alliedmods.net/smdrop/1.11/$SMVERSION | tar zxf - -C compiler/ \
     && chmod +x $COMPILER_PATH/spcomp
-    
+
 # Dependency: Multicolors
 RUN mkdir dependency \
     && cd dependency \
     && git clone https://github.com/Bara/Multi-Colors.git . \
     && rsync -av addons/sourcemod/scripting/include/ $COMPILER_PATH/include/ \
-    && rm -rf dependency/
+    && rm -rf dependency
 
-# 1v100 Plugin
+# Compile Plugin
 RUN cd addons/sourcemod/scripting/ \
     && $COMPILER_PATH/spcomp 1v100.sp
